@@ -1,32 +1,25 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera; 
-    [SerializeField] private Camera bossCamera;
-
+    public readonly Dictionary<String, Vector3> LastScenePositionDictionary = new ();
+    
     private void Start()
     {
-        GameState.ActiveCamera = mainCamera;
-        bossCamera.gameObject.SetActive(false);
-        mainCamera.gameObject.SetActive(true);
+        DontDestroyOnLoad(gameObject);
+        LastScenePositionDictionary.Add("StartingScene", new Vector3(0, 1.48f, 0));
+        LastScenePositionDictionary.Add("TunnelScene", new Vector3(0, 0.14f, 7.99f));
+        LastScenePositionDictionary.Add("BossScene", new Vector3(0, 0, 0));
+
     }
-    
-    public GameState GameState { get; set; } = new ();
-    public void SwitchCamera()
+
+
+    public bool HasScene(String sceneName)
     {
-        bossCamera.gameObject.SetActive(true);
-        mainCamera.gameObject.SetActive(false);
-        GameState.ActiveCamera = bossCamera;
+        return LastScenePositionDictionary.ContainsKey(sceneName);
     }
-}
 
-public class GameState
-{
-    public Camera ActiveCamera { get; set; }
-    
-    public bool OpenedChest { get; set; }
-
-    public bool TriggeredGate { get; set; }
-
+    public string CurrentScene { get; set; }
 }
