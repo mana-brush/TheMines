@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float downwardForce = -2f; // A small constant downward force
     
     // [SerializeField] private GameManager _gameManager;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed = 20f;
     
     private CharacterController _characterController;
     private InputAction _moveAction;
