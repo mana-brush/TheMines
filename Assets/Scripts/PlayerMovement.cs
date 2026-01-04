@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float downwardForce = -2f; // A small constant downward force
     
     // [SerializeField] private GameManager _gameManager;
-    [SerializeField] private float speed = 20f;
+    [SerializeField] private float speed = 10f;
     
     private CharacterController _characterController;
     private InputAction _moveAction;
@@ -40,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector2 moveInput = _moveAction.ReadValue<Vector2>();
-        Vector3 movement = new Vector3(moveInput.x, 0.0f, moveInput.y);    
+        Vector3 movement = new Vector3(0f, 0.0f, -moveInput.x);
+        
         if (_characterController.isGrounded)
         {
             // Reset vertical velocity when grounded, but apply a constant downward force
@@ -55,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
             // Apply regular gravity when in the air
             movement.y += gravity * Time.deltaTime;
         }
+        
         _characterController.Move(movement * (speed * Time.deltaTime));
     }
 }
