@@ -1,11 +1,12 @@
 using System;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ChestController : MonoBehaviour
 {
 
-    [SerializeField] private Canvas helpText;
+    [SerializeField] public bool overrideWasOpened;
     private static readonly int WasOpened = Animator.StringToHash("wasOpened");
 
     private Animator _animator;
@@ -19,6 +20,11 @@ public class ChestController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _openAction = InputSystem.actions.FindAction("Interact");
+
+        if (overrideWasOpened)
+        {
+            _animator.SetBool(WasOpened, overrideWasOpened);
+        }
     }
 
     // Update is called once per frame
@@ -40,19 +46,17 @@ public class ChestController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player" && !_wasOpened)
+        if (other.gameObject.name == "Hero" && !_wasOpened)
         {
             _withinOpeningRange = true;
-            helpText.gameObject.SetActive(true);
         }
     }    
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.name == "Hero")
         {
             _withinOpeningRange = false;
-            helpText.gameObject.SetActive(false);
         }
     }
 }
