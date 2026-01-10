@@ -882,9 +882,6 @@ PrefabInstance:
       addedObject: {fileID: 2081998065}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20b8e7b69b36595419994cad42ec79e9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2081998064}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20b8e7b69b36595419994cad42ec79e9, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2081998063}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20b8e7b69b36595419994cad42ec79e9, type: 3}
       insertIndex: -1
@@ -1170,19 +1167,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2081998064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081998061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75de8f3745359a85b0a8872c8b36846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChestController
-  overrideWasOpened: 0
 --- !u!95 &2081998065
 Animator:
   serializedVersion: 7
